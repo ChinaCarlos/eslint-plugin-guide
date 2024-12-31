@@ -23,6 +23,10 @@ test:
     - pnpm test
     - pnpm format:check
   coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)/'
+  rules:
+    - if: $CI_COMMIT_BRANCH
+      coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)/'
+      coverage_level: 95%
 
 # 构建阶段
 build:
