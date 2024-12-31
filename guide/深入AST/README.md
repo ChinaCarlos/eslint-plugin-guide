@@ -223,5 +223,5 @@ export = rule;
 - 我们可以通过 https://astexplorer.net 检查 AST
 - 我们可以通过 http://estools.github.io/esquery 检查选择器查询
 
-[上一章](../10_your_first_rule/README.md)
-[下一章](../30_other_parsers/README.md)
+[上一章](../你的第一个规则/README.md)
+[下一章](../其他解析器/README.md)

@@ -168,4 +168,4 @@ $ echo "const x = 1;" | npx eslint --stdin
 - 你需要实现 `Rule.RuleModule` 来创建 ESLint 规则
 - ESLint 插件 NPM 包必须带有 "eslint-plugin" 前缀
 
-[下一章](../20_dive_into_ast/README.md)
+[下一章](../深入AST/README.md)
