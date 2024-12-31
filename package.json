@@ -1,0 +1,67 @@
+{
+  "name": "@quramy/eslint-plugin-tutorial",
+  "version": "1.0.0",
+  "description": "A tutorial repository to create your first eslint rule",
+  "main": "lib/index.js",
+  "scripts": {
+    "start-tutorial": "rimraf \"src/rules/**/*\" && rimraf src/index.ts && npm un @typescript-eslint/parser",
+    "clean": "rimraf lib",
+    "prebuild": "rimraf node_modules/@types/eslint/node_modules/@types/estree",
+    "build": "tsc",
+    "prettier": "prettier \"*.{js,json,yml,yaml,md}\" \"src/**/*\" \"guide/**/*\"",
+    "format": "yarn prettier --write",
+    "format:check": "yarn prettier --check",
+    "test": "jest",
+    "prepublish": "npm run clean && npm run build"
+  },
+  "files": [
+    "README.md",
+    "package.json",
+    "lib"
+  ],
+  "keywords": [
+    "eslint",
+    "typescript",
+    "example"
+  ],
+  "author": "Quramy",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/eslint": "8.44.9",
+    "@types/estree": "1.0.5",
+    "@types/node": "20.12.7",
+    "@typescript-eslint/parser": "6.12.0",
+    "eslint": "8.55.0",
+    "husky": "8.0.3",
+    "jest": "29.7.0",
+    "prettier": "2.8.8",
+    "pretty-quick": "3.1.3",
+    "rimraf": "5.0.5",
+    "ts-jest": "29.1.1",
+    "typescript": "5.3.3"
+  },
+  "peerDependencies": {
+    "eslint": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0"
+  },
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "diagnostics": false
+      }
+    },
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "testRegex": "(src/.*\\.test)\\.ts$",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "\\.d\\.ts$",
+      "lib/.*"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "json"
+    ]
+  }
+}
