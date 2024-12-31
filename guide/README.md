@@ -12,6 +12,6 @@ $ npm run start-tutorial
 
 ## 章节
 
-1. [你的第一个规则](./10_your_first_rule/README.md)
-1. [深入 AST](./20_dive_into_ast/README.md)
-1. [其他解析器](./30_other_parsers/README.md)
+1. [你的第一个规则](./你的第一个规则/README.md)
+1. [深入 AST](./深入AST/README.md)
+1. [其他解析器](./其他解析器/README.md)
