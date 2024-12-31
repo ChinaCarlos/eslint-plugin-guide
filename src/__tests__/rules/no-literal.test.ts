@@ -1,6 +1,6 @@
 import { RuleTester } from "eslint";
 
-import rule from "./no-literal";
+import rule from "../../rules/no-literal";
 
 const tester = new RuleTester({ parserOptions: { ecmaVersion: 2015 } });
 

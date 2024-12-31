@@ -1,5 +1,7 @@
 # 构建输出
 lib/
+dist/
+build/
 
 # 测试覆盖率报告
 coverage/
@@ -8,7 +10,5 @@ coverage/
 **/__tests__/**/*.snap
 **/__snapshots__/**
 
-node_modules/
-*.png
-pnpm-lock.yaml
-.gitlab-ci.yml
+# 依赖
+node_modules/ 

@@ -9,6 +9,10 @@ build/
 # 测试覆盖率报告
 coverage/
 
+# 测试快照
+**/__tests__/**/*.snap
+**/__snapshots__/**
+
 # IDE 和编辑器
 .idea/
 .vscode/
