@@ -1,0 +1,40 @@
+image: node:18
+
+cache:
+  paths:
+    - node_modules/
+    - .pnpm-store/
+
+stages:
+  - test
+  - build
+
+# 安装依赖
+.install_dependencies:
+  before_script:
+    - npm install -g pnpm
+    - pnpm install --frozen-lockfile
+
+# 测试阶段
+test:
+  extends: .install_dependencies
+  stage: test
+  script:
+    - pnpm test
+    - pnpm format:check
+  coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)/'
+
+# 构建阶段
+build:
+  extends: .install_dependencies
+  stage: build
+  script:
+    - pnpm format:check
+    - pnpm build
+  artifacts:
+    paths:
+      - lib/
+    expire_in: 1 week
+  only:
+    - main
+    - master 

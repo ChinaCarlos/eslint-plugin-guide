@@ -107,7 +107,7 @@ export = {
 
 在执行 `npm publish` 之前，先确认我们的第一个插件在 NPM 项目中是否正常工作。
 
-在 eslint-plugin-tutorial 目录下执行以下命令（如果你喜欢使用 `yarn`，也可以用 `yarn`）：
+在 eslint-plugin-guide 目录下执行以下命令（如果你喜欢使用 `yarn`，也可以用 `yarn`）：
 
 ```sh
 $ npm link
@@ -128,25 +128,25 @@ $ npm i eslint --dev
 将我们的插件添加到示例项目中：
 
 ```sh
-$ npm link @quramy/eslint-plugin-tutorial
+$ npm link @carlos/eslint-plugin-guide
 ```
 
 最后，创建 .eslintrc 并配置使用我们的插件：
 
 ```json
 {
-  "plugins": ["@quramy/tutorial"],
+  "plugins": ["@carlos/guide"],
   "parserOptions": {
     "ecmaVersion": 2015
   },
   "rules": {
-    "@quramy/tutorial/no-literal": 2
+    "@carlos/guide/no-literal": 2
   }
 }
 ```
 
 ESLint 插件包名必须带有 "eslint-plugin" 前缀。
-现在，我们的插件包名为 "@quramy/eslint-plugin-tutorial"，所以 ESLint 使用这个命名约定将其识别为 "@quramy/tutorial"。
+现在，我们的插件包名为 "@carlos/eslint-plugin-guide"，所以 ESLint 使用这个命名约定将其识别为 "@carlos/guide"。
 
 好了，让我们运行它！
 
@@ -158,7 +158,7 @@ $ echo "const x = 1;" | npx eslint --stdin
 
 ```text
 <text>
-  1:11  error  😿  @quramy/tutorial/no-literal
+  1:11  error  😿  @carlos/guide/no-literal
 
 ✖ 1 problem (1 error, 0 warnings)
 ```

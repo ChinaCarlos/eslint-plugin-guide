@@ -4,3 +4,4 @@ coverage/
 node_modules/
 *.png
 pnpm-lock.yaml
+.gitlab-ci.yml
