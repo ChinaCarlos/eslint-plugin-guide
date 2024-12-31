@@ -1,11 +1,19 @@
 {
   "name": "@carlos/eslint-plugin-guide",
   "version": "1.0.0",
-  "description": "A guide repository to create your first eslint rule",
+  "description": "一个教你如何创建自定义 ESLint 规则的指南项目，包含了从基础到进阶的完整教程",
   "main": "lib/index.js",
   "engines": {
     "node": ">=18.0.0",
     "pnpm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChinaCarlos/eslint-plugin-guide.git"
+  },
+  "homepage": "https://github.com/ChinaCarlos/eslint-plugin-guide#readme",
+  "bugs": {
+    "url": "https://github.com/ChinaCarlos/eslint-plugin-guide/issues"
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
@@ -27,7 +35,11 @@
   "keywords": [
     "eslint",
     "typescript",
-    "example"
+    "eslint-plugin",
+    "guide",
+    "tutorial",
+    "ast",
+    "static-analysis"
   ],
   "author": "carlos",
   "license": "MIT",

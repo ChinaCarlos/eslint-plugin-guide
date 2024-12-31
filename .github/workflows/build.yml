@@ -1,6 +1,10 @@
 name: build
 
-on: [pull_request, push]
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
 
 jobs:
   build:
@@ -8,19 +12,46 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
+        pnpm-version: [8.x]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Install dependencies
-        run: yarn --frozen-lockfile
-      - name: Format check
-        run: yarn format:check
-      - name: Unit Testing
-        run: yarn test
-        env:
-          CI: true
+
+      - name: Check pnpm installation
+        id: check-pnpm
+        run: |
+          if ! command -v pnpm &> /dev/null; then
+            echo "pnpm not found, installing..."
+            npm install -g pnpm@${{ matrix.pnpm-version }}
+          else
+            echo "pnpm already installed"
+          fi
+
+      - name: Install pnpm ${{ matrix.pnpm-version }}
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ matrix.pnpm-version }}
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
+      - run: pnpm format:check
+      - run: pnpm build
